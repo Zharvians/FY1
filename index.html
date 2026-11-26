@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Pengingat Spesial Buat Kamu ✨</title>
+    <!-- Google Fonts: Quicksand & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient-1: #fff0f5;
+            --bg-gradient-2: #ffe4e1;
+            --bg-gradient-3: #f3e5f5;
+            --card-bg: rgba(255, 255, 255, 0.72);
+            --card-border: rgba(255, 255, 255, 0.9);
+            --primary-pink: #ff6b8b;
+            --primary-pink-hover: #ff477e;
+            --gold-accent: #d4af37;
+            --text-dark: #4a3b42;
+            --text-muted: #7a656f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            min-height: 100dvh;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
+            background-size: 300% 300%;
+            animation: gradientBG 12s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+            padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Dekorasi Latar Belakang Mengambang */
+        .floating-elements {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floater {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.45;
+            animation: floatUp 15s linear infinite;
+            will-change: transform, opacity;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(110dvh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% {
+                transform: translateY(-15dvh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Kartu Utama Glassmorphism Mewah */
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 430px;
+            background: var(--card-bg);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 2px solid var(--card-border);
+            border-radius: 32px;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 
+                0 20px 50px rgba(255, 107, 139, 0.16),
+                0 0 0 1px rgba(212, 175, 55, 0.22),
+                inset 0 0 20px rgba(255, 255, 255, 0.85);
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease;
+        }
+
+        /* Optimasi iPad & Tablet (Portrait & Landscape) */
+        @media (min-width: 600px) and (max-width: 1180px) {
+            .card {
+                max-width: 500px;
+                padding: 46px 40px;
+                border-radius: 38px;
+            }
+
+            h1 {
+                font-size: 33px !important;
+            }
+
+            .message {
+                font-size: 16.5px !important;
+            }
+
+            .mascot-container {
+                width: 126px !important;
+                height: 126px !important;
+            }
+
+            .mascot-emoji {
+                font-size: 64px !important;
+            }
+
+            button {
+                font-size: 16px !important;
+                padding: 16px 26px !important;
+            }
+        }
+
+        /* Optimasi HP Layar Kecil & Mode Landscape */
+        @media (max-width: 400px) {
+            .card {
+                padding: 28px 20px;
+                border-radius: 26px;
+            }
+
+            h1 {
+                font-size: 24px !important;
+            }
+
+            .message {
+                font-size: 14.5px !important;
+                margin-bottom: 22px !important;
+            }
+
+            .mascot-container {
+                width: 96px !important;
+                height: 96px !important;
+                margin-bottom: 16px !important;
+            }
+
+            .mascot-emoji {
+                font-size: 48px !important;
+            }
+        }
+
+        @media (max-height: 620px) and (orientation: landscape) {
+            body {
+                align-items: flex-start;
+                padding-top: 14px;
+                padding-bottom: 14px;
+            }
+
+            .card {
+                max-width: 620px;
+                padding: 22px 28px;
+            }
+
+            .mascot-container {
+                width: 78px !important;
+                height: 78px !important;
+                margin-bottom: 12px !important;
+            }
+
+            .mascot-emoji {
+                font-size: 40px !important;
+            }
+
+            h1 {
+                font-size: 23px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .message, .status-box, .coupon {
+                margin-bottom: 14px !important;
+            }
+        }
+
+        /* Badge Atas */
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #fff8e7, #ffefd5);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            color: #b58900;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.12);
+        }
+
+        /* Karakter Lucu Animasi */
+        .mascot-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
+            background: linear-gradient(145deg, #ffffff, #ffe6ee);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 10px 25px rgba(255, 107, 139, 0.2),
+                inset 0 -4px 10px rgba(255, 182, 193, 0.45);
+            border: 3px solid #fff;
+            animation: bounceCute 3s ease-in-out infinite;
+        }
+
+        .mascot-emoji {
+            font-size: 56px;
+            transition: transform 0.3s ease;
+        }
+
+        .mascot-container:hover .mascot-emoji,
+        .mascot-container:active .mascot-emoji {
+            transform: scale(1.15) rotate(8deg);
+        }
+
+        @keyframes bounceCute {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        /* Tipografi */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        h1 span {
+            color: var(--primary-pink);
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        /* Kotak Pesan Dinamis */
+        .status-box {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            border: 1px dashed rgba(255, 107, 139, 0.45);
+            font-size: 14px;
+            color: var(--primary-pink);
+            font-weight: 600;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Tombol Interaktif */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            min-height: 48px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s ease, background 0.25s ease;
+            touch-action: manipulation;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-yes::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.32) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            20%, 100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .btn-yes:hover,
+        .btn-yes:active {
+            transform: scale(1.03);
+            box-shadow: 0 12px 25px rgba(255, 117, 140, 0.55);
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.88);
+            color: var(--text-muted);
+            border: 1px solid rgba(122, 101, 111, 0.22);
+            font-size: 14px;
+            padding: 12px 20px;
+        }
+
+        .btn-no:hover,
+        .btn-no:active {
+            background: #fff;
+            color: var(--primary-pink);
+        }
+
+        /* Tampilan Sukses */
+        .success-view {
+            display: none;
+            animation: fadeInScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.88); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .coupon {
+            background: linear-gradient(135deg, #fffdf9, #fff0f5);
+            border: 2px dashed var(--gold-accent);
+            border-radius: 22px;
+            padding: 20px 18px;
+            margin: 20px 0;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .coupon-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-accent);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .coupon-desc {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .coupon-sub {
+            margin-top: 6px;
+            font-size: 12.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Partikel Konfeti Hati */
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 20px;
+            animation: confettiFall 3s ease-out forwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100dvh) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Elemen Latar Mengambang -->
+    <div class="floating-elements" id="floatingBg"></div>
+
+    <!-- Kartu Utama -->
+    <div class="card">
+        <!-- Tampilan Awal -->
+        <div id="askView">
+            <div class="badge">✨ Special Reminder ✨</div>
+            
+            <div class="mascot-container">
+                <span class="mascot-emoji" id="mascotEmoji">🧸</span>
+            </div>
+
+            <h1>Hai Cantik, <span>Jangan Lupa Makan</span> Ya!</h1>
+            
+            <p class="message">
+                Sibuk boleh, tapi kesehatan kamu jauh lebih penting buat aku. Jangan sampai telat makan, nanti asam lambungnya naik lagi loh 🥺
+            </p>
+
+            <div class="status-box" id="statusBox">
+                Udah makan belum hari ini? Jujur ya! 🍽️
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-yes" id="btnYes">Sudah / OTW Makan! 💖</button>
+                <button class="btn-no" id="btnNo">Belum, nanti aja...</button>
+            </div>
+        </div>
+
+        <!-- Tampilan Setelah Klik Sudah Makan -->
+        <div class="success-view" id="successView">
+            <div class="badge">👑 Good Girl Award 👑</div>
+            
+            <div class="mascot-container">
+                <span class="mascot-emoji">🥰</span>
+            </div>
+
+            <h1>Yeay! <span>Anak Baik</span> 💖</h1>
+            
+            <p class="message">
+                Nah gitu dong, nurut dan sayang sama diri sendiri. Jangan lupa minum air putih yang cukup juga ya!
+            </p>
+
+            <div class="coupon">
+                <div class="coupon-title">✨ Official Certificate ✨</div>
+                <div class="coupon-desc">1x Gelar Anak Baik &amp; Paling Gemes Sedunia</div>
+                <div class="coupon-sub">Berlaku selamanya karena kamu udah mau makan tepat waktu 🌸</div>
+            </div>
+
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Boleh banget di-screenshot buat pamer ke aku 📸
+            </p>
+
+            <button class="btn-yes" onclick="spawnHeartsBurst()" style="width: 100%;">
+                Kirim Peluk Virtual 🤗
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Membuat dekorasi mengambang di background (disesuaikan dengan ukuran layar)
+        const floatingBg = document.getElementById('floatingBg');
+        const bgIcons = ['✨', '🌸', '🍓', '💖', '🍰', '🧸', '🌷'];
+        const floaterCount = window.innerWidth < 600 ? 12 : 18;
+
+        for (let i = 0; i < floaterCount; i++) {
+            const el = document.createElement('div');
+            el.classList.add('floater');
+            el.innerText = bgIcons[Math.floor(Math.random() * bgIcons.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            el.style.animationDelay = (Math.random() * 10) + 's';
+            el.style.fontSize = (Math.random() * 12 + 16) + 'px';
+            floatingBg.appendChild(el);
+        }
+
+        // 2. Logika Interaktif Tombol "Belum" yang Lucu
+        const btnNo = document.getElementById('btnNo');
+        const btnYes = document.getElementById('btnYes');
+        const statusBox = document.getElementById('statusBox');
+        const mascotEmoji = document.getElementById('mascotEmoji');
+
+        const pleads = [
+            { text: "Eits, gak bisa! Makan dulu sekarang 🥺", emoji: "🥺" },
+            { text: "Nanti sakit perut loh, aku khawatir tau... 💔", emoji: "😢" },
+            { text: "Satu suap aja gapapa, yang penting keisi 🍚", emoji: "🍲" },
+            { text: "Kalau gak makan, tombol ini bakal kabur terus! 😝", emoji: "😤" },
+            { text: "Udah pencet tombol pink aja biar jadi anak baik! ✨", emoji: "🥰" }
+        ];
+
+        let noClickCount = 0;
+
+        function moveButton() {
+            const currentPlead = pleads[noClickCount % pleads.length];
+            statusBox.innerText = currentPlead.text;
+            mascotEmoji.innerText = currentPlead.emoji;
+            noClickCount++;
+
+            const currentScale = 1 + (noClickCount * 0.05);
+            btnYes.style.transform = `scale(${Math.min(currentScale, 1.25)})`;
+
+            const maxX = window.innerWidth < 600 ? 55 : 85;
+            const maxY = window.innerWidth < 600 ? 28 : 40;
+            const randomX = (Math.random() * maxX * 2) - maxX;
+            const randomY = (Math.random() * maxY * 2) - maxY;
+
+            btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        btnNo.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Hindari trigger ganda di layar sentuh (HP/iPad)
+        let touchHandled = false;
+        btnNo.addEventListener('touchstart', (e) => {
+            touchHandled = true;
+            e.preventDefault();
+            moveButton();
+            setTimeout(() => { touchHandled = false; }, 300);
+        }, { passive: false });
+
+        btnNo.addEventListener('mouseover', () => {
+            if (!touchHandled && window.matchMedia('(hover: hover)').matches && window.innerWidth > 1024) {
+                moveButton();
+            }
+        });
+
+        // 3. Logika Tombol "Sudah / OTW Makan"
+        const askView = document.getElementById('askView');
+        const successView = document.getElementById('successView');
+
+        btnYes.addEventListener('click', () => {
+            askView.style.display = 'none';
+            successView.style.display = 'block';
+            spawnHeartsBurst();
+        });
+
+        // 4. Efek Hujan Hati & Bintang
+        function spawnHeartsBurst() {
+            const burstIcons = ['💖', '✨', '🌸', '🥰', '🍓', '👑'];
+            const totalBurst = window.innerWidth < 600 ? 32 : 45;
+
+            for (let i = 0; i < totalBurst; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.innerText = burstIcons[Math.floor(Math.random() * burstIcons.length)];
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-20px';
+                    confetti.style.fontSize = (Math.random() * 14 + 18) + 'px';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 40);
+            }
+        }
+    </script>
+</body>
+</html>
